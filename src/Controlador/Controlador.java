@@ -74,8 +74,12 @@ public static void leerDatosEnTxt(String nombreArchivo, int numeroLista) throws 
         // TODO code application logic here
         Controlador.leerDatosEnTxt("listaUsuarios.txt", 1);
         Controlador.leerDatosEnTxt("listaObras.txt", 2);
+<<<<<<< HEAD
         new Inicio().setVisible(true);
         
+=======
+        //Hola
+>>>>>>> 64dd160ad73c91fab31b7242e392b6ae78642042
     }
     
 }
