@@ -1,5 +1,9 @@
 package Vista;
 
+import Modelo.Usuario;
+import Controlador.Controlador;
+import javax.swing.JOptionPane;
+
 public class RegistroUsario extends javax.swing.JFrame {
 
     public RegistroUsario() {
@@ -64,12 +68,35 @@ public class RegistroUsario extends javax.swing.JFrame {
         jPanel1.add(txt_ContraseniaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 100, -1));
 
         btn_registrarUsuario.setText("Registrarse");
+        btn_registrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarUsuarioActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_registrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_registrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarUsuarioActionPerformed
+        // TODO add your handling code here:
+        try{
+            String nombreUsuario=txt_NombreRegistro.getText();
+            String apellidoUsuario=txt_apellidoRegistro.getText();
+            String curpUsuario=txt_CurpRegistro.getText();
+            String contraseniaUsuario=txt_ContraseniaRegistro.getText();
+
+            Controlador.listaUsuarios.add(new Usuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseniaUsuario));
+            Controlador.escribirDatosEnTxt("listaUsuarios.txt", 1);
+            new IniciarSesion().setVisible(true);
+            this.dispose();
+           
+        }catch(NumberFormatException e1){
+            JOptionPane.showMessageDialog(null, "Error en la captura de datos");
+        }
+    }//GEN-LAST:event_btn_registrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
