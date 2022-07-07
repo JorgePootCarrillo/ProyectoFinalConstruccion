@@ -21,7 +21,12 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
     }
 
-    
+    public void borrar(){
+        RegistroNombreUsuario.setText("");
+        RegistroContraseñaUsuario.setText("");
+        RegistroCurpUsuario.setText("");
+        RegistroApellidoUsuario.setText("");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,8 +71,18 @@ public class Registro extends javax.swing.JFrame {
         jLabel4.setText("Contraseña");
 
         Bt_RegistroUsuario.setText("Registrarse");
+        Bt_RegistroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bt_RegistroUsuarioActionPerformed(evt);
+            }
+        });
 
         Bt_RegistroIniciarSesionUsuario.setText("Iniciar sesion");
+        Bt_RegistroIniciarSesionUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bt_RegistroIniciarSesionUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +147,21 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Bt_RegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_RegistroUsuarioActionPerformed
+       String nombreUsuario=RegistroNombreUsuario.getText();
+       String apellidoUsuario=RegistroApellidoUsuario.getText();
+       String curpUsuario=RegistroCurpUsuario.getText();
+       String contraseniaaUsuario=RegistroContraseñaUsuario.getText();
+       Controlador controlador=new Controlador();
+       controlador.registrarUsuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseniaaUsuario);
+       borrar();
+    }//GEN-LAST:event_Bt_RegistroUsuarioActionPerformed
+
+    private void Bt_RegistroIniciarSesionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_RegistroIniciarSesionUsuarioActionPerformed
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Bt_RegistroIniciarSesionUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,10 +187,10 @@ public class Registro extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new Registro().setVisible(true);
             }
         });
     }

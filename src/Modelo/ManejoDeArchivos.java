@@ -25,6 +25,7 @@ public class ManejoDeArchivos {
     public static ArrayList<Object> listaObras = new ArrayList<Object>();
     
     public static void escribirArchivo(ArrayList<Usuario> listaUsuarios){
+        
         File archivo;
         FileWriter escribir;
         PrintWriter linea;
@@ -37,6 +38,7 @@ public class ManejoDeArchivos {
                 linea.println(listaUsuarios.toString().replace("[","").replace("]", ""));
                 linea.close();
                 escribir.close();
+
             } catch (IOException ex) {
                 Logger.getLogger(ManejoDeArchivos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -47,11 +49,13 @@ public class ManejoDeArchivos {
                 linea.println(listaUsuarios.toString().replace("[","").replace("]", ""));
                 linea.close();
                 escribir.close();
+
             } catch (IOException ex) {
                 Logger.getLogger(ManejoDeArchivos.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
+        
     }
     
     public static boolean lecturaArchivo(String usuario, String contrasenia) throws IOException{

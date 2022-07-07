@@ -49,8 +49,18 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         IniciarSesionUsuario.setText("Ingresar");
+        IniciarSesionUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarSesionUsuarioActionPerformed(evt);
+            }
+        });
 
         RegistrarUsuario.setText("Registrase");
+        RegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,6 +105,18 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void IniciarSesionUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarSesionUsuarioActionPerformed
+        String nombre=LoginNombreUsuario.getText();
+        String contrasenia=LoginContraseñaUsuario.getText();
+        Controlador controlador=new Controlador();
+        controlador.iniciarSesionUsuario(nombre,contrasenia);
+    }//GEN-LAST:event_IniciarSesionUsuarioActionPerformed
+
+    private void RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarUsuarioActionPerformed
+        new Registro().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RegistrarUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -122,11 +144,10 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new Login().setVisible(true);
             }
         });
     }

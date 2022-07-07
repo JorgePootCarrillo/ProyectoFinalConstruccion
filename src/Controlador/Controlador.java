@@ -16,79 +16,60 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author EnriqueChim
  */
-public class Controlador implements ActionListener{
+public class Controlador extends JFrame{
     ManejoDeArchivos manejo=new ManejoDeArchivos();
     Login login=new Login();
     Registro registro=new Registro();
     MenuTeatro menuteatro=new MenuTeatro();
 
-    public Controlador( Login login, Registro registro, MenuTeatro menuteatro) {
-        this.login=login;
-        this.menuteatro=menuteatro;
-        this.registro=registro;
-        this.registro.Bt_RegistroUsuario.addActionListener(this);
-        this.registro.Bt_RegistroIniciarSesionUsuario.addActionListener(this);
-        this.login.IniciarSesionUsuario.addActionListener(this);
-        this.login.RegistrarUsuario.addActionListener(this);
-    }
     
-    public void iniciarSesionUsuario(){
-        String nombre=login.LoginNombreUsuario.getText();
-        String contrasenia=login.LoginContraseñaUsuario.getText();
+    public void iniciarSesionUsuario(String nombre, String contrasenia){
         try {
             if(ManejoDeArchivos.lecturaArchivo(nombre, contrasenia)==true){
                 new MenuTeatro().setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");
             }
+            
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
 
-    public void registrarUsuario(){
+    public void registrarUsuario(String nombreUsuario, String apellidoUsuario, String curpUsuario, String contraseniaUsuario){
+        boolean usuarioAgregado=false;
         try{
-            String nombreUsuario=registro.RegistroNombreUsuario.getText();
-            String apellidoUsuario=registro.RegistroApellidoUsuario.getText();
-            String curpUsuario=registro.RegistroCurpUsuario.getText();
-            String contraseñaUsuario=registro.RegistroContraseñaUsuario.getText();
-            Usuario usuario=new Usuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseñaUsuario);
+            if(nombreUsuario.isEmpty() || apellidoUsuario.isEmpty() || curpUsuario.isEmpty() || contraseniaUsuario.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campos Vacios");
+            }else{
+                
+            Usuario usuario=new Usuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseniaUsuario);
             AdministradorDeUsuario.listaUsuarios.add(usuario);
             ManejoDeArchivos.escribirArchivo(listaUsuarios);
+            
+            usuarioAgregado=true;
+            }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "ERROR EN EL REGISTRO");
+            usuarioAgregado=false;
+        }
+        
+        
+        if(usuarioAgregado){
+            JOptionPane.showMessageDialog(null, "USUARIO AGREGADO");
         }
         
     }
     
     
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==login.IniciarSesionUsuario){
-            iniciarSesionUsuario();
-            System.out.println("1");
-        }
-        if(e.getSource()==login.RegistrarUsuario){
-            new Registro().setVisible(true);
-       
-            if(e.getSource()==registro.Bt_RegistroUsuario){
-                System.out.println("HSHSH");
-                registrarUsuario();
-                System.out.println("2");
-            }else if(e.getSource()==registro.Bt_RegistroIniciarSesionUsuario){
-                new Login().setVisible(true);
-                System.out.println("3");
-            }
-            System.out.println("4");
-        }
-    }
+    
     
 }

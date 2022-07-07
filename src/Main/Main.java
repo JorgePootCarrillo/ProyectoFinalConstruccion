@@ -5,6 +5,7 @@
 package Main;
 
 import Controlador.Controlador;
+import Modelo.ManejoDeArchivos;
 import Vista.Login;
 import Vista.MenuTeatro;
 import Vista.Registro;
@@ -15,12 +16,7 @@ import Vista.Registro;
  */
 public class Main {
     public static void main(String[] args) {
-        Login login=new Login();
-        Registro registro=new Registro();
-        MenuTeatro menuteatro=new MenuTeatro();
-        Controlador controlador=new Controlador(login,registro,menuteatro);
-        login.setVisible(true);
-        registro.setVisible(true);
+        
     }
     
 }

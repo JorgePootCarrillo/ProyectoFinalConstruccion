@@ -27,7 +27,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return  nombreUsuario +" "+ apellidoUsuario +" "+ curpUsuario +" "+  contraseniaUsuario ;
+        return  nombreUsuario +" "+ apellidoUsuario +" "+ curpUsuario +" "+  contraseniaUsuario + " " ;
     }
 
     public void setNombreUsuario(String nombreUsuario) {

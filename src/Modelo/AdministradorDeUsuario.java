@@ -12,5 +12,5 @@ import java.util.ArrayList;
  * @author EnriqueChim
  */
 public class AdministradorDeUsuario {
-    public static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+    public static ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>(); 
 }
