@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -110,6 +111,9 @@ public class Login extends javax.swing.JFrame {
         String contrasenia=LoginContraseñaUsuario.getText();
         Controlador controlador=new Controlador();
         controlador.iniciarSesionUsuario(nombre,contrasenia);
+        if(controlador.isControl()){
+            this.dispose();
+        }
     }//GEN-LAST:event_IniciarSesionUsuarioActionPerformed
 
     private void RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarUsuarioActionPerformed

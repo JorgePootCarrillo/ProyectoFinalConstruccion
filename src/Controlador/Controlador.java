@@ -13,7 +13,7 @@ import Vista.MenuTeatro;
 import Vista.Registro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.io.IOException;  
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -28,18 +28,31 @@ public class Controlador extends JFrame{
     Login login=new Login();
     Registro registro=new Registro();
     MenuTeatro menuteatro=new MenuTeatro();
+    private boolean controlDeVentana=false;
+
+    public void setControl(boolean control) {
+        this.controlDeVentana = control;
+    }
+
+    public boolean isControl() {
+        return controlDeVentana;
+    }
+
+    
 
     
     public void iniciarSesionUsuario(String nombre, String contrasenia){
         try {
             if(ManejoDeArchivos.lecturaArchivo(nombre, contrasenia)==true){
                 new MenuTeatro().setVisible(true);
+                controlDeVentana=true;
             }else{
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");
+                controlDeVentana=false;
             }
-            
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            controlDeVentana=false;
         }
     }
     

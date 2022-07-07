@@ -15,6 +15,7 @@ public class MenuTeatro extends javax.swing.JFrame {
      */
     public MenuTeatro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
