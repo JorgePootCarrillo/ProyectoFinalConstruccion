@@ -76,7 +76,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        boolean iniciarSesion = false;
+         boolean iniciarSesion = false;
             String nombre = txt_UsuarioIniciarSesion.getText();
             String contrasenia = txt_ContraseniaIniciarSesion.getText();
             for(int i = 0; i<Controlador.listaUsuarios.size(); i++){
@@ -89,6 +89,7 @@ public class IniciarSesion extends javax.swing.JFrame {
             if (iniciarSesion == false){
                 JOptionPane.showMessageDialog(null, "Nombre o contraseña incorrectos");
             }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

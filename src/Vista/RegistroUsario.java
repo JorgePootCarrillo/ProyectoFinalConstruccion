@@ -83,13 +83,13 @@ public class RegistroUsario extends javax.swing.JFrame {
     private void btn_registrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarUsuarioActionPerformed
         // TODO add your handling code here:
         try{
-            String nombreUsuario=txt_NombreRegistro.getText();
+           String nombreUsuario=txt_NombreRegistro.getText();
             String apellidoUsuario=txt_apellidoRegistro.getText();
             String curpUsuario=txt_CurpRegistro.getText();
             String contraseniaUsuario=txt_ContraseniaRegistro.getText();
-
-            Controlador.listaUsuarios.add(new Usuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseniaUsuario));
-            Controlador.escribirDatosEnTxt("listaUsuarios.txt", 1);
+            Usuario usuario= new Usuario(nombreUsuario,apellidoUsuario,curpUsuario,contraseniaUsuario);
+            Controlador.listaUsuarios.add(usuario);
+           // Controlador.escribirDatosEnTxt("listaUsuarios.txt", 1);
             new IniciarSesion().setVisible(true);
             this.dispose();
            

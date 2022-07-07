@@ -13,8 +13,6 @@ public class Usuario {
         this.contraseniaUsuario = contraseniaUsuario;
     }
 
-    
-    
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -47,5 +45,5 @@ public class Usuario {
         this.contraseniaUsuario = contraseniaUsuario;
     }
     
-    
+    //Falta toString
 }
